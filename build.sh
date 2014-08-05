@@ -1,11 +1,16 @@
 #!/bin/sh
 
-DISTRO=ubuntu-precise
+if [ $# -ne 1 ]; then
+	echo "Usage: $0 <distro>"
+	exit 1
+fi
+
+DISTRO=$1
 INPUT=glimpse_client-0.1
 
 # Delete the build folder if it exists
 if [ -e "build" ]; then
-	rm -fr build
+	sudo rm -fr build
 fi
 
 mkdir build || exit "Unable to create build folder"
