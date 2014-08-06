@@ -5,3 +5,4 @@ RUN echo "deb http://debmirror.informatik.hs-augsburg.de/ubuntu/ binary/" > /etc
 RUN apt-get -qq update
 RUN apt-get -qqy --force-yes install qt53base qt53quickcontrols git dh-make libwnck-dev libgl1-mesa-dev
 ENV PATH /opt/qt53/bin:$PATH
+ADD build.sh /usr/bin/

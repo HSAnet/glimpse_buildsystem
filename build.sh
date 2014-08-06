@@ -17,5 +17,5 @@ mkdir build || exit "Unable to create build folder"
 
 cp -r $INPUT build/ || exit "Unable to copy input data to build dir"
 
-docker run --workdir=/build/$INPUT -v $PWD/build:/build buildserver/$DISTRO dpkg-buildpackage -b
+docker run --workdir=/build/$INPUT -v $PWD/build:/build buildserver/$DISTRO build.sh
 
