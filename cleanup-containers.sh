@@ -1,4 +1,4 @@
 #!/bin/sh
 
-# Remove all containers (may be hacky if there are others running)
-docker rm `docker ps -aq`
+# Remove all containers that contain the word buildserver
+docker rm `docker ps -a | grep buildserver | awk '{print $1;}'`
