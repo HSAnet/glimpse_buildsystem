@@ -1,13 +1,17 @@
 #!/bin/sh
 
-BUILD_DIRECTORY=glimpse_client-0.1
+VERSION=`sed -n "s/^pkgver=\(.*\)/\1/p" PKGBUILD`
+BUILD_DIRECTORY=`ls ../ | tail -n1`
+ARCHIVE_BASE=$BUILD_DIRECTORY-$VERSION
+ARCHIVE=$ARCHIVE_BASE.tar.gz
 
 cd ..
-tar -zcf $BUILD_DIRECTORY.tar.gz $BUILD_DIRECTORY
+mv $BUILD_DIRECTORY $ARCHIVE_BASE
+tar -zcf $ARCHIVE $ARCHIVE_BASE
 
-cp $BUILD_DIRECTORY/PKGBUILD .
+cp $ARCHIVE_BASE/PKGBUILD .
 
-SHASUM=`sha512sum $BUILD_DIRECTORY.tar.gz | awk '{print $1;}'`
+SHASUM=`sha512sum $ARCHIVE | awk '{print $1;}'`
 sed "s/%SHA512SUM%/$SHASUM/g" -i PKGBUILD
 
 makepkg --asroot

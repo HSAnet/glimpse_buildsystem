@@ -1,5 +1,11 @@
 #!/bin/sh
 
+VERSION=`sed -n "s/^pkgver=\(.*\)/\1/p" PKGBUILD`
+BUILD_DIRECTORY=`ls ../ | tail -n1`
+ARCHIVE_BASE=$BUILD_DIRECTORY-$VERSION
+ARCHIVE=$ARCHIVE_BASE.tar.gz
+SPEC_FILE=`ls *.spec | tail -n1`
+
 # Setup the rpmdev tree
 rpmdev-setuptree
 
@@ -8,12 +14,13 @@ cp glimpse_client.spec /rpmbuild/SPECS/
 
 # Create an source archive
 cd ..
-tar -zcf glimpse_client-0.1.tar.gz glimpse_client-0.1/*
-mv glimpse_client-0.1.tar.gz /rpmbuild/SOURCES/
+mv $BUILD_DIRECTORY $ARCHIVE_BASE
+tar -zcf $ARCHIVE $ARCHIVE_BASE/*
+mv $ARCHIVE /rpmbuild/SOURCES/
 
 # Generate the package
 cd /rpmbuild/SPECS
-rpmbuild -ba glimpse_client.spec
+rpmbuild -ba $SPEC_FILE
 
 # Copy the generated package to the build folder
 cp `find /rpmbuild/RPMS/ -name *.rpm` /build

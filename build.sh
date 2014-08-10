@@ -1,12 +1,12 @@
 #!/bin/sh
 
-if [ $# -ne 1 ]; then
-	echo "Usage: $0 <distro>"
+if [ $# -ne 2 ]; then
+	echo "Usage: $0 <input-directory> <distro>"
 	exit 1
 fi
 
-DISTRO=$1
-INPUT=glimpse_client-0.1
+DISTRO=$2
+INPUT=$1
 
 # Delete the build folder if it exists
 if [ -e "build" ]; then
