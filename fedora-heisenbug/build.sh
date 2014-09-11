@@ -1,6 +1,6 @@
 #!/bin/sh
 
-VERSION=`sed -n "s/^pkgver=\(.*\)/\1/p" PKGBUILD`
+VERSION=`awk '/^Version:/ {print $2}' glimpse_client.spec`
 BUILD_DIRECTORY=`ls ../ | tail -n1`
 ARCHIVE_BASE=$BUILD_DIRECTORY-$VERSION
 ARCHIVE=$ARCHIVE_BASE.tar.gz
