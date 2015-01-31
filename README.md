@@ -35,3 +35,6 @@ Example build: glimpse
 glimpse_0.1alpha1-12_amd64.changes  glimpse_0.1alpha1-12_amd64.deb  glimpse_client  glimpse-console_0.1alpha1-12_amd64.deb  glimpse-gui_0.1alpha1-12_amd64.deb  libglimpse_0.1alpha1-12_amd64.deb
 
 ```
+
+## License
+Copyright (c) 2014-2015, University of Applied Sciences Augsburg. All rights reserved. Distributed under the terms and conditions of the BSD License. See separate LICENSE.txt.
