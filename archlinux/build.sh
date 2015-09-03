@@ -14,4 +14,6 @@ cp $ARCHIVE_BASE/PKGBUILD .
 SHASUM=`sha512sum $ARCHIVE | awk '{print $1;}'`
 sed "s/%SHA512SUM%/$SHASUM/g" -i PKGBUILD
 
-sudo -u build makepkg
+chgrp -R nobody .
+chmod -R g+ws .
+sudo -u nobody makepkg
