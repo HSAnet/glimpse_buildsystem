@@ -16,4 +16,5 @@ sed "s/%SHA512SUM%/$SHASUM/g" -i PKGBUILD
 
 chgrp -R nobody .
 chmod -R g+ws .
+pacman-db-upgrade
 sudo -u nobody makepkg
