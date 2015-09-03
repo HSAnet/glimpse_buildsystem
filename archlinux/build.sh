@@ -14,6 +14,7 @@ cp $ARCHIVE_BASE/PKGBUILD .
 SHASUM=`sha512sum $ARCHIVE | awk '{print $1;}'`
 sed "s/%SHA512SUM%/$SHASUM/g" -i PKGBUILD
 
-chgrp -R nobody $ARCHIVE_BASE
-chmod -R g+ws $ARCHIVE_BASE
+chgrp -R nobody .
+chmod -R g+ws .
+pacman-db-upgrade
 sudo -u nobody makepkg
