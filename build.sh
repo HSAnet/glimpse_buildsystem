@@ -10,7 +10,7 @@ INPUT=$1
 
 # Delete the build folder if it exists
 if [ -e "build" ]; then
-	sudo rm -fr build
+	rm -fr build
 fi
 
 mkdir build || exit "Unable to create build folder"
